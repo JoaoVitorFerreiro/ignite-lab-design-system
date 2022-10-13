@@ -5,7 +5,7 @@ on:
     branches:
       - main
 
-jobs: 
+jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      
+
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build Storybook
-        run: npm run biuld-storybook
+        run: npm run build-storybook
 
       - name: Deploy Storybook
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
